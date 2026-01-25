@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import * as motion from 'motion/react-client'
+import { useState } from 'react'
 
 interface PortfolioData {
   eyebrow?: string
@@ -56,12 +57,25 @@ const defaults = {
 
 function VideoCard({ video, index }: { video: PortfolioItem; index: number }) {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [running, setRunning] = useState(false);
+
+  const handleMouseEnter = () => {
+    if (!running)
+      videoRef.current.play()
+  }
+
+  const handleMouseLeave = () => {
+    if (!running)
+      videoRef.current.pause();
+  }
 
   const handleMouseClick = () => {
     if (videoRef.current) {
-      if (videoRef.current.paused)
+      if (videoRef.current.paused) {
+        setRunning(true);
         videoRef.current.play()
-      else {
+      } else {
+        setRunning(false);
         videoRef.current.currentTime = 0
         videoRef.current.pause()
       }
@@ -77,13 +91,14 @@ function VideoCard({ video, index }: { video: PortfolioItem; index: number }) {
       transition={{ duration: 0.4, delay: index * 0.1 }}
       whileHover={{ y: -8 }}
       onMouseUp={handleMouseClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       className="group relative aspect-[9/16] overflow-hidden rounded-2xl bg-gray-900 cursor-pointer"
     >
       {video.videoUrl ? (
         <video
           ref={videoRef}
           loop
-          muted
           playsInline
           preload="metadata"
           className="absolute inset-0 h-full w-full object-cover"
