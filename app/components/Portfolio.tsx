@@ -1,13 +1,14 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import * as motion from 'motion/react-client'
-import { useState } from 'react'
 
 interface PortfolioData {
   eyebrow?: string
   heading?: string
   description?: string
+  portfolioMore?: string
+  portfolioMoreLink?: string
 }
 
 interface PortfolioItem {
@@ -53,6 +54,8 @@ const defaults = {
   eyebrow: 'My Work',
   heading: 'Portfolio',
   description: 'A collection of my best short-form video edits. Each project showcases my ability to create engaging content that resonates with audiences.',
+  portfolioMore: "See More Projects",
+  portfolioMoreLink: 'https://drive.google.com/drive/u/4/folders/1RU0I5CAyNH4g6rthsazXB8f5qBpzKMNF',
 }
 
 function VideoCard({ video, index }: { video: PortfolioItem; index: number }) {
@@ -60,13 +63,13 @@ function VideoCard({ video, index }: { video: PortfolioItem; index: number }) {
   const [running, setRunning] = useState(false);
 
   const handleMouseEnter = () => {
-    if (!running)
-      videoRef.current.play()
+    if (!running && videoRef)
+      videoRef.current?.play()
   }
 
   const handleMouseLeave = () => {
-    if (!running)
-      videoRef.current.pause();
+    if (!running && videoRef)
+      videoRef.current?.pause();
   }
 
   const handleMouseClick = () => {
@@ -79,7 +82,6 @@ function VideoCard({ video, index }: { video: PortfolioItem; index: number }) {
         videoRef.current.currentTime = 0
         videoRef.current.pause()
       }
-
     }
   }
 
@@ -122,6 +124,7 @@ export default function Portfolio({ data, items }: { data?: PortfolioData; items
   const heading = data?.heading ?? defaults.heading
   const description = data?.description ?? defaults.description
   const videos = items && items.length > 0 ? items : defaultVideos
+  const portfolioMore = data?.portfolioMore ?? defaults.portfolioMore
 
   return (
     <section id="portfolio" className="bg-white pt-32 lg:pt-48">
@@ -160,6 +163,19 @@ export default function Portfolio({ data, items }: { data?: PortfolioData; items
             <VideoCard key={video._id} video={video} index={index} />
           ))}
         </div>
+
+        <motion.a
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-lg lg:text-xl tracking-tight text-balance block text-center text-cyan-600 hover:text-cyan-800 transition-colors mt-8 flex items-center justify-center gap-3 group"
+          href={data?.portfolioMoreLink || defaults.portfolioMoreLink}
+        >
+          <div className="bg-cyan-600 group-hover:bg-cyan-800 w-4 h-[2px]"></div>
+          {portfolioMore}
+          <div className="bg-cyan-600 group-hover:bg-cyan-800 w-4 h-[2px]"></div>
+        </motion.a>
       </div>
     </section>
   )
