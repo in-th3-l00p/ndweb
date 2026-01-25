@@ -6,7 +6,7 @@ export const HERO_QUERY = defineQuery(`*[_type == "hero"][0]{
   description,
   primaryCta,
   secondaryCta,
-  videoUrl
+  "videoUrl": video.asset->url
 }`)
 
 export const ABOUT_QUERY = defineQuery(`*[_type == "about"][0]{
@@ -47,7 +47,7 @@ export const PAGE_DATA_QUERY = defineQuery(`{
     description,
     primaryCta,
     secondaryCta,
-    videoUrl
+    "videoUrl": video.asset->url
   },
   "about": *[_type == "about"][0]{
     eyebrow,

@@ -47,10 +47,13 @@ export const hero = defineType({
       ],
     }),
     defineField({
-      name: 'videoUrl',
-      title: 'Hero Video URL',
-      type: 'url',
-      description: 'URL to a video file (MP4 recommended) that will be displayed in the phone mockup',
+      name: 'video',
+      title: 'Hero Video',
+      type: 'file',
+      options: {
+        accept: 'video/*',
+      },
+      description: 'Upload a video file (MP4 recommended) that will be displayed in the phone mockup',
     }),
   ],
   preview: {

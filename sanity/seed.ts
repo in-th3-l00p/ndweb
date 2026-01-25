@@ -62,7 +62,7 @@ const seedData = {
       text: 'About Me',
       link: '#about',
     },
-    videoUrl: 'https://videos.pexels.com/video-files/3571264/3571264-uhd_1440_2732_30fps.mp4',
+    // Note: Video must be uploaded via Sanity Studio at /studio
   },
 
   about: {
