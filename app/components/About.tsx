@@ -1,16 +1,31 @@
 'use client'
 
-import { CloudArrowUpIcon, LockClosedIcon, ServerIcon, BoltIcon, ChartBarIcon, CodeBracketIcon } from '@heroicons/react/20/solid'
+import {
+  FilmIcon,
+  VideoCameraIcon,
+  ScissorsIcon,
+  SparklesIcon,
+  MusicalNoteIcon,
+  BoltIcon,
+  EyeIcon,
+  ClockIcon,
+  HeartIcon,
+  StarIcon
+} from '@heroicons/react/20/solid'
 import * as motion from 'motion/react-client'
 import { urlFor } from '@/sanity/lib/image'
 
 const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
-  cloud: CloudArrowUpIcon,
-  lock: LockClosedIcon,
-  server: ServerIcon,
+  film: FilmIcon,
+  videoCamera: VideoCameraIcon,
+  scissors: ScissorsIcon,
+  sparkles: SparklesIcon,
+  musicalNote: MusicalNoteIcon,
   bolt: BoltIcon,
-  chart: ChartBarIcon,
-  code: CodeBracketIcon,
+  eye: EyeIcon,
+  clock: ClockIcon,
+  heart: HeartIcon,
+  star: StarIcon,
 }
 
 interface AboutData {
@@ -27,26 +42,26 @@ interface AboutData {
 
 const defaultFeatures = [
   {
-    name: 'Push to deploy.',
-    description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
-    icon: 'cloud',
+    name: 'Precision Editing',
+    description: 'Every frame matters. I craft seamless edits that capture attention and tell compelling stories.',
+    icon: 'scissors',
   },
   {
-    name: 'SSL certificates.',
-    description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
-    icon: 'lock',
+    name: 'Creative Vision',
+    description: 'Transforming raw footage into polished content with a unique artistic perspective.',
+    icon: 'sparkles',
   },
   {
-    name: 'Database backups.',
-    description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-    icon: 'server',
+    name: 'Fast Turnaround',
+    description: 'Quick delivery without compromising quality. Your project, on time, every time.',
+    icon: 'bolt',
   },
 ]
 
 const defaults = {
-  eyebrow: 'Deploy faster',
-  heading: 'A better workflow',
-  description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+  eyebrow: 'About Me',
+  heading: 'Video Editor & Content Creator',
+  description: 'I\'m David Stefan Nedelea, a passionate video editor specializing in short-form content that captivates audiences and drives engagement.',
   features: defaultFeatures,
 }
 
@@ -91,7 +106,7 @@ export default function About({ data }: { data?: AboutData }) {
             </motion.p>
             <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none">
               {features.map((feature, index) => {
-                const IconComponent = iconMap[feature.icon || 'cloud'] || CloudArrowUpIcon
+                const IconComponent = iconMap[feature.icon || 'film'] || FilmIcon
                 return (
                   <motion.div
                     key={feature.name}

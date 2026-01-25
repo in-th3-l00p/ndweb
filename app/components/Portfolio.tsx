@@ -56,9 +56,9 @@ const defaultVideos = [
 ]
 
 const defaults = {
-  eyebrow: 'check out my stuff',
+  eyebrow: 'My Work',
   heading: 'Portfolio',
-  description: 'A collection of my best short-form video edits.',
+  description: 'A collection of my best short-form video edits. Each project showcases my ability to create engaging content that resonates with audiences.',
 }
 
 function VideoCard({ video, index }: { video: PortfolioItem | typeof defaultVideos[0]; index: number }) {

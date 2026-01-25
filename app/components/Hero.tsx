@@ -24,14 +24,14 @@ interface HeroData {
 
 const defaults = {
   badge: {
-    highlight: "We're hiring",
-    text: 'See open positions',
-    link: '#',
+    highlight: 'Available for work',
+    text: 'Get in touch',
+    link: '#contact',
   },
-  heading: 'A better way to ship your projects',
-  description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua. Anim aute id magna aliqua ad ad non deserunt sunt.',
-  primaryCta: { text: 'Get started', link: '#' },
-  secondaryCta: { text: 'Learn more', link: '#' },
+  heading: 'David Stefan Nedelea',
+  description: 'Professional video editor specializing in short-form content, brand storytelling, and social media videos. I transform raw footage into captivating stories that engage audiences and drive results.',
+  primaryCta: { text: 'View My Work', link: '#portfolio' },
+  secondaryCta: { text: 'About Me', link: '#about' },
 }
 
 export default function Hero({ data }: { data?: HeroData }) {

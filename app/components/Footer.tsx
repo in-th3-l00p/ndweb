@@ -68,15 +68,14 @@ const socialIcons: Record<string, (props: React.SVGProps<SVGSVGElement>) => Reac
 }
 
 const defaultLinks = [
-  { name: 'Facebook', url: '#', platform: 'facebook' },
   { name: 'Instagram', url: '#', platform: 'instagram' },
-  { name: 'X', url: '#', platform: 'x' },
-  { name: 'GitHub', url: '#', platform: 'github' },
+  { name: 'TikTok', url: '#', platform: 'tiktok' },
   { name: 'YouTube', url: '#', platform: 'youtube' },
+  { name: 'LinkedIn', url: '#', platform: 'linkedin' },
 ]
 
 export default function Footer({ data }: { data?: FooterData }) {
-  const copyright = data?.copyright ?? '2024 Your Company, Inc. All rights reserved.'
+  const copyright = data?.copyright ?? `${new Date().getFullYear()} David Stefan Nedelea. All rights reserved.`
   const socialLinks = data?.socialLinks && data.socialLinks.length > 0 ? data.socialLinks : defaultLinks
 
   return (
