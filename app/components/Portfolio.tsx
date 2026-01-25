@@ -82,6 +82,7 @@ export default function Portfolio() {
     <section className="bg-white">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-base/7 font-semibold text-cyan-600">check out my stuff</h2>
           <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
             Portfolio
           </h2>
