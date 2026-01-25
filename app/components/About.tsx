@@ -73,7 +73,7 @@ export default function About({ data }: { data?: AboutData }) {
   const imageUrl = data?.image ? urlFor(data.image).url() : '/image.png'
 
   return (
-    <div id="about" className="bg-white max-w-7xl mx-auto pt-48 lg:pt-96">
+    <div id="about" className="bg-white max-w-7xl mx-auto pt-16 lg:pt-24">
       <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
         <div className="lg:ml-auto lg:pt-4 lg:pl-4">
           <div className="lg:max-w-lg">
@@ -132,7 +132,7 @@ export default function About({ data }: { data?: AboutData }) {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
-          className="flex items-start justify-end lg:order-first"
+          className="flex items-start self-center justify-end lg:order-first"
         >
           <img
             alt="Product screenshot"

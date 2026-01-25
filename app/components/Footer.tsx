@@ -33,7 +33,7 @@ export default function Footer({ data, socialLinks }: FooterProps) {
       transition={{ duration: 0.5 }}
       className="bg-white"
     >
-      <div className="mx-auto max-w-7xl md:flex md:items-center md:justify-between pt-32 lg:pt-64 pb-12">
+      <div className="mx-auto max-w-7xl md:flex md:items-center md:justify-between pt-12 lg:pt-20 pb-12">
         <div className="flex justify-center gap-x-6 md:order-2">
           {links.map((item, index) => {
             const IconComponent = socialIcons[item.platform || 'github']
