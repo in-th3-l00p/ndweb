@@ -3,16 +3,20 @@ import About from './components/About'
 import Portfolio from './components/Portfolio'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import { client } from '@/sanity/lib/client'
+import { PAGE_DATA_QUERY } from '@/sanity/lib/queries'
 
-export default function Home() {
+export default async function Home() {
+  const data = await client.fetch(PAGE_DATA_QUERY)
+
   return (
     <>
       <main className="min-h-screen bg-white px-6 lg:px-8 space-y-48 lg:space-y-64 sm:pt-64 lg:pt-0">
-        <Header />
-        <Hero />
-        <About />
-        <Portfolio />
-        <Footer />
+        <Header data={data.header} />
+        <Hero data={data.hero} />
+        <About data={data.about} />
+        <Portfolio data={data.portfolio} items={data.portfolioItems} />
+        <Footer data={data.footer} />
       </main>
     </>
   )

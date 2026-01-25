@@ -4,16 +4,24 @@ import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import * as motion from 'motion/react-client'
+import { urlFor } from '@/sanity/lib/image'
 
-const navigation = [
+interface HeaderData {
+  logo?: { asset: { _ref: string } }
+  navigation?: { name: string; href: string }[]
+}
+
+const defaultNavigation = [
   { name: 'Product', href: '#' },
   { name: 'Features', href: '#' },
   { name: 'Marketplace', href: '#' },
   { name: 'Company', href: '#' },
 ]
 
-export default function Header() {
+export default function Header({ data }: { data?: HeaderData }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const navigation = data?.navigation ?? defaultNavigation
+  const logoUrl = data?.logo ? urlFor(data.logo).url() : 'https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=cyan&shade=600'
 
   return (
     <motion.header
@@ -33,7 +41,7 @@ export default function Header() {
             <span className="sr-only">Your Company</span>
             <img
               alt=""
-              src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=cyan&shade=600"
+              src={logoUrl}
               className="h-8 w-auto"
             />
           </a>
@@ -72,7 +80,7 @@ export default function Header() {
               <span className="sr-only">Your Company</span>
               <img
                 alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=cyan&shade=600"
+                src={logoUrl}
                 className="h-8 w-auto"
               />
             </a>
