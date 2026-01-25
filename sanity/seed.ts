@@ -138,47 +138,94 @@ const seedData = {
     ],
   },
 
+  contact: {
+    _id: 'contact',
+    _type: 'contact',
+    heading: 'Get in Touch',
+    description: 'Ready to bring your vision to life? Reach out through any of these channels and let\'s create something amazing together.',
+    contactItems: [
+      {
+        _key: 'contact1',
+        name: 'Instagram',
+        value: '@davidnedelea',
+        url: 'https://instagram.com/davidnedelea',
+        platform: 'instagram',
+      },
+      {
+        _key: 'contact2',
+        name: 'LinkedIn',
+        value: 'David Nedelea',
+        url: 'https://linkedin.com/in/davidnedelea',
+        platform: 'linkedin',
+      },
+      {
+        _key: 'contact3',
+        name: 'Fiverr',
+        value: 'davidnedelea',
+        url: 'https://fiverr.com/davidnedelea',
+        platform: 'fiverr',
+      },
+      {
+        _key: 'contact4',
+        name: 'Book a Call',
+        value: 'cal.com/davidnedelea',
+        url: 'https://cal.com/davidnedelea',
+        platform: 'cal',
+      },
+    ],
+  },
+
+  cta: {
+    _id: 'cta',
+    _type: 'cta',
+    heading: 'Ready to elevate your content?',
+    description: 'Let\'s collaborate to create stunning video content that captures your audience\'s attention and drives engagement.',
+    primaryCta: {
+      text: 'Get Started',
+      link: '#contact',
+    },
+    secondaryCta: {
+      text: 'View Portfolio',
+      link: '#portfolio',
+    },
+  },
+
+  // Note: Videos and thumbnails must be uploaded via Sanity Studio at /studio
   portfolioItems: [
     {
       _id: 'portfolio-item-1',
       _type: 'portfolioItem',
       title: 'Brand Story Edit',
-      videoUrl: 'https://www.youtube.com/watch?v=example1',
       order: 1,
     },
     {
       _id: 'portfolio-item-2',
       _type: 'portfolioItem',
       title: 'Product Launch',
-      videoUrl: 'https://www.youtube.com/watch?v=example2',
       order: 2,
     },
     {
       _id: 'portfolio-item-3',
       _type: 'portfolioItem',
       title: 'Lifestyle Reel',
-      videoUrl: 'https://www.youtube.com/watch?v=example3',
       order: 3,
     },
     {
       _id: 'portfolio-item-4',
       _type: 'portfolioItem',
       title: 'Travel Montage',
-      videoUrl: 'https://www.youtube.com/watch?v=example4',
       order: 4,
     },
     {
       _id: 'portfolio-item-5',
       _type: 'portfolioItem',
       title: 'Fashion Edit',
-      videoUrl: 'https://www.youtube.com/watch?v=example5',
       order: 5,
     },
     {
       _id: 'portfolio-item-6',
       _type: 'portfolioItem',
       title: 'Music Video',
-      videoUrl: 'https://www.youtube.com/watch?v=example6',
       order: 6,
     },
   ],
@@ -208,6 +255,14 @@ async function seed() {
     console.log('📝 Creating Footer...')
     await client.createOrReplace(seedData.footer)
     console.log('   ✓ Footer created')
+
+    console.log('📝 Creating Contact Section...')
+    await client.createOrReplace(seedData.contact)
+    console.log('   ✓ Contact section created')
+
+    console.log('📝 Creating CTA Section...')
+    await client.createOrReplace(seedData.cta)
+    console.log('   ✓ CTA section created')
 
     console.log('📝 Creating Portfolio Items...')
     for (const item of seedData.portfolioItems) {

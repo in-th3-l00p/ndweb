@@ -14,19 +14,14 @@ export const portfolioItem = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'thumbnail',
-      title: 'Thumbnail',
-      type: 'image',
+      name: 'video',
+      title: 'Video',
+      type: 'file',
       options: {
-        hotspot: true,
+        accept: 'video/*',
       },
+      description: 'Upload a video file (MP4 recommended)',
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'videoUrl',
-      title: 'Video URL',
-      type: 'url',
-      description: 'YouTube, Vimeo, or direct video URL',
     }),
     defineField({
       name: 'order',
@@ -45,14 +40,12 @@ export const portfolioItem = defineType({
   preview: {
     select: {
       title: 'title',
-      media: 'thumbnail',
       order: 'order',
     },
-    prepare({title, media, order}) {
+    prepare({title, order}) {
       return {
         title: title,
         subtitle: `Order: ${order ?? 0}`,
-        media: media,
       }
     },
   },
