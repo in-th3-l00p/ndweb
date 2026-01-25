@@ -14,14 +14,14 @@
     "@heroicons/react": "^2.2.0",
     "@portabletext/react": "^6.0.2",
     "@sanity/client": "^7.14.1",
-    "@sanity/image-url": "^1.2.0",
-    "@sanity/vision": "^4.22.0",
+    "@sanity/image-url": "2.0.3",
+    "@sanity/vision": "5.6.0",
     "motion": "^12.29.0",
     "next": "16.1.4",
     "next-sanity": "^12.0.14",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "sanity": "^4.22.0",
+    "sanity": "5.6.0",
     "styled-components": "^6.3.8"
   },
   "devDependencies": {
@@ -34,6 +34,5 @@
     "eslint-config-next": "16.1.4",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "packageManager": "pnpm@10.24.0+sha512.01ff8ae71b4419903b65c60fb2dc9d34cf8bb6e06d03bde112ef38f7a34d6904c424ba66bea5cdcf12890230bf39f9580473140ed9c946fef328b6e5238a345a"
+  }
 }
