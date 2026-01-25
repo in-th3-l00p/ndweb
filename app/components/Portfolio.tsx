@@ -109,7 +109,7 @@ export default function Portfolio({ data, items }: { data?: PortfolioData; items
   const videos = items && items.length > 0 ? items : defaultVideos
 
   return (
-    <section id="portfolio" className="bg-white pt-16 lg:pt-24">
+    <section id="portfolio" className="bg-white pt-32 lg:pt-48">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
           <motion.h2

@@ -36,7 +36,7 @@ export default function CTA({ data }: { data?: CTAData }) {
 
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-7xl pt-16 sm:pt-24">
+      <div className="mx-auto max-w-7xl pt-32 lg:pt-48">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

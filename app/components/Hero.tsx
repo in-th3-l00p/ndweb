@@ -44,7 +44,7 @@ export default function Hero({ data }: { data?: HeroData }) {
   const videoUrl = data?.videoUrl ?? defaults.videoUrl
 
   return (
-    <div id="#" className="relative isolate bg-white flex flex-col justify-center pt-16 lg:pt-24">
+    <div id="#" className="relative isolate bg-white flex flex-col justify-center pt-32 lg:pt-48">
       <svg
         aria-hidden="true"
         className="absolute inset-0 -z-10 size-full mask-[radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-gray-200"
