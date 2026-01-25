@@ -60,7 +60,7 @@ export default function Hero() {
           </div>
         </div>
         <div className="mt-16 sm:mt-24 lg:mt-0 lg:shrink-0 lg:grow">
-          <svg role="img" viewBox="0 0 366 729" className="mx-auto w-91.5 max-w-full drop-shadow-xl">
+          <svg role="img" viewBox="0 0 366 729" className="ml-auto w-91.5 max-w-full drop-shadow-xl">
             <title>App screenshot</title>
             <defs>
               <clipPath id="2ade4387-9c63-4fc4-b754-10e687a0d332">
