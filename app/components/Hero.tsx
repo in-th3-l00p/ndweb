@@ -27,7 +27,7 @@ export default function Hero() {
         </svg>
         <rect fill="url(#83fd4e5a-9d52-42fc-97b6-718e5d7ee527)" width="100%" height="100%" strokeWidth={0} />
       </svg>
-      <div className="mx-auto w-full max-w-7xl lg:flex lg:items-center lg:justify-between lg:gap-x-10">
+      <div className="mx-auto w-full max-w-7xl lg:flex lg:items-center lg:justify-between lg:gap-x-10 pt-32 sm:pt-0">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
           <div className="flex">
             <div className="relative flex items-center gap-x-4 rounded-full bg-white px-4 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
