@@ -1,37 +1,61 @@
 import {defineType, defineField} from 'sanity'
-import {PhotoIcon} from '@heroicons/react/24/outline'
+import {SparklesIcon} from '@heroicons/react/24/outline'
 
 export const hero = defineType({
   name: 'hero',
   title: 'Hero Section',
   type: 'document',
-  icon: PhotoIcon,
+  icon: SparklesIcon,
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'badge',
+      title: 'Badge',
+      type: 'object',
+      fields: [
+        {name: 'highlight', type: 'string', title: 'Highlight Text'},
+        {name: 'text', type: 'string', title: 'Badge Text'},
+        {name: 'link', type: 'string', title: 'Badge Link'},
+      ],
+    }),
+    defineField({
+      name: 'heading',
+      title: 'Heading',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'subtitle',
-      title: 'Subtitle',
-      type: 'string',
+      name: 'description',
+      title: 'Description',
+      type: 'text',
     }),
     defineField({
-      name: 'backgroundImage',
-      title: 'Background Image',
-      type: 'image',
+      name: 'primaryCta',
+      title: 'Primary CTA Button',
+      type: 'object',
+      fields: [
+        {name: 'text', type: 'string', title: 'Button Text'},
+        {name: 'link', type: 'string', title: 'Button Link'},
+      ],
     }),
     defineField({
-      name: 'ctaText',
-      title: 'Call-to-Action Text',
-      type: 'string',
+      name: 'secondaryCta',
+      title: 'Secondary CTA Link',
+      type: 'object',
+      fields: [
+        {name: 'text', type: 'string', title: 'Link Text'},
+        {name: 'link', type: 'string', title: 'Link URL'},
+      ],
     }),
     defineField({
-      name: 'ctaLink',
-      title: 'Call-to-Action Link',
-      type: 'string',
+      name: 'videoUrl',
+      title: 'Hero Video URL',
+      type: 'url',
+      description: 'URL to a video file (MP4 recommended) that will be displayed in the phone mockup',
     }),
   ],
+  preview: {
+    select: {
+      title: 'heading',
+    },
+  },
 })

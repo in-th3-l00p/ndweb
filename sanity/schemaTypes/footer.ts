@@ -20,11 +20,40 @@ export const footer = defineType({
         {
           type: 'object',
           fields: [
-            {name: 'platform', type: 'string', title: 'Platform'},
-            {name: 'url', type: 'string', title: 'URL'},
+            {name: 'name', type: 'string', title: 'Platform Name'},
+            {name: 'url', type: 'url', title: 'URL'},
+            {
+              name: 'platform',
+              type: 'string',
+              title: 'Platform',
+              options: {
+                list: [
+                  {title: 'Facebook', value: 'facebook'},
+                  {title: 'Instagram', value: 'instagram'},
+                  {title: 'X (Twitter)', value: 'x'},
+                  {title: 'GitHub', value: 'github'},
+                  {title: 'YouTube', value: 'youtube'},
+                  {title: 'LinkedIn', value: 'linkedin'},
+                  {title: 'TikTok', value: 'tiktok'},
+                ],
+              },
+            },
           ],
+          preview: {
+            select: {
+              title: 'name',
+              subtitle: 'platform',
+            },
+          },
         },
       ],
     }),
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Footer Settings',
+      }
+    },
+  },
 })

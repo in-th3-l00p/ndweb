@@ -2,15 +2,15 @@
  * Sanity Seed Script for David Stefan Nedelea's Portfolio
  *
  * Run this script to populate Sanity with default content:
- * npx sanity exec sanity/seed.ts --with-user-token
- *
- * Or using ts-node:
- * npx ts-node --skip-project sanity/seed.ts
- *
- * Make sure you have SANITY_API_TOKEN set in your environment
+ * pnpm seed
  */
 
 import { createClient } from '@sanity/client'
+import { config } from 'dotenv'
+import { resolve } from 'path'
+
+// Load environment variables from .env.local
+config({ path: resolve(process.cwd(), '.env.local') })
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'bzuqy45v'
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
@@ -62,6 +62,7 @@ const seedData = {
       text: 'About Me',
       link: '#about',
     },
+    videoUrl: 'https://videos.pexels.com/video-files/3571264/3571264-uhd_1440_2732_30fps.mp4',
   },
 
   about: {

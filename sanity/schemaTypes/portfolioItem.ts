@@ -1,46 +1,32 @@
 import {defineType, defineField} from 'sanity'
-import {PhotoIcon} from '@heroicons/react/24/outline'
+import {FilmIcon} from '@heroicons/react/24/outline'
 
 export const portfolioItem = defineType({
   name: 'portfolioItem',
   title: 'Portfolio Item',
   type: 'document',
-  icon: PhotoIcon,
+  icon: FilmIcon,
   fields: [
     defineField({
       name: 'title',
-      title: 'Project Title',
+      title: 'Title',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {source: 'title'},
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'blockContent',
-    }),
-    defineField({
-      name: 'image',
-      title: 'Featured Image',
+      name: 'thumbnail',
+      title: 'Thumbnail',
       type: 'image',
+      options: {
+        hotspot: true,
+      },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'technologies',
-      title: 'Technologies Used',
-      type: 'array',
-      of: [{type: 'string'}],
-    }),
-    defineField({
-      name: 'projectUrl',
-      title: 'Project URL',
+      name: 'videoUrl',
+      title: 'Video URL',
       type: 'url',
+      description: 'YouTube, Vimeo, or direct video URL',
     }),
     defineField({
       name: 'order',
@@ -49,15 +35,24 @@ export const portfolioItem = defineType({
       initialValue: 0,
     }),
   ],
+  orderings: [
+    {
+      title: 'Display Order',
+      name: 'orderAsc',
+      by: [{field: 'order', direction: 'asc'}],
+    },
+  ],
   preview: {
     select: {
       title: 'title',
-      image: 'image',
+      media: 'thumbnail',
+      order: 'order',
     },
-    prepare(selection) {
+    prepare({title, media, order}) {
       return {
-        title: selection.title,
-        media: selection.image,
+        title: title,
+        subtitle: `Order: ${order ?? 0}`,
+        media: media,
       }
     },
   },

@@ -8,29 +8,39 @@ export const header = defineType({
   icon: LinkIcon,
   fields: [
     defineField({
-      name: 'title',
-      title: 'Site Title',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
+      name: 'logo',
+      title: 'Logo',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
-      name: 'navigationLinks',
+      name: 'navigation',
       title: 'Navigation Links',
       type: 'array',
       of: [
         {
           type: 'object',
           fields: [
-            {name: 'label', type: 'string', title: 'Label'},
-            {name: 'url', type: 'string', title: 'URL'},
+            {name: 'name', type: 'string', title: 'Link Text'},
+            {name: 'href', type: 'string', title: 'URL'},
           ],
+          preview: {
+            select: {
+              title: 'name',
+              subtitle: 'href',
+            },
+          },
         },
       ],
     }),
   ],
   preview: {
-    select: {
-      title: 'title',
+    prepare() {
+      return {
+        title: 'Header Settings',
+      }
     },
   },
 })

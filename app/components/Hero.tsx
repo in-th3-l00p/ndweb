@@ -19,7 +19,7 @@ interface HeroData {
     text?: string
     link?: string
   }
-  image?: { asset: { _ref: string } }
+  videoUrl?: string
 }
 
 const defaults = {
@@ -32,6 +32,7 @@ const defaults = {
   description: 'Professional video editor specializing in short-form content, brand storytelling, and social media videos. I transform raw footage into captivating stories that engage audiences and drive results.',
   primaryCta: { text: 'View My Work', link: '#portfolio' },
   secondaryCta: { text: 'About Me', link: '#about' },
+  videoUrl: 'https://videos.pexels.com/video-files/3571264/3571264-uhd_1440_2732_30fps.mp4',
 }
 
 export default function Hero({ data }: { data?: HeroData }) {
@@ -40,6 +41,7 @@ export default function Hero({ data }: { data?: HeroData }) {
   const description = data?.description ?? defaults.description
   const primaryCta = data?.primaryCta ?? defaults.primaryCta
   const secondaryCta = data?.secondaryCta ?? defaults.secondaryCta
+  const videoUrl = data?.videoUrl ?? defaults.videoUrl
 
   return (
     <div className="relative isolate bg-white min-h-screen flex flex-col justify-center">
@@ -145,7 +147,14 @@ export default function Hero({ data }: { data?: HeroData }) {
               clipPath="url(#2ade4387-9c63-4fc4-b754-10e687a0d332)"
               transform="translate(24 24)"
             >
-              <img alt="" src="https://tailwindcss.com/plus-assets/img/component-images/mobile-app-screenshot.png" />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="h-full w-full object-cover"
+                src={videoUrl}
+              />
             </foreignObject>
           </svg>
         </motion.div>

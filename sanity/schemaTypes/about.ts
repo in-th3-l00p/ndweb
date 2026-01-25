@@ -8,40 +8,72 @@ export const about = defineType({
   icon: UserIcon,
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'eyebrow',
+      title: 'Eyebrow Text',
+      type: 'string',
+    }),
+    defineField({
+      name: 'heading',
+      title: 'Heading',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'content',
-      title: 'Content',
-      type: 'blockContent',
+      name: 'description',
+      title: 'Description',
+      type: 'text',
     }),
     defineField({
-      name: 'profileImage',
-      title: 'Profile Image',
+      name: 'features',
+      title: 'Features',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {name: 'name', type: 'string', title: 'Feature Name'},
+            {name: 'description', type: 'text', title: 'Feature Description'},
+            {
+              name: 'icon',
+              type: 'string',
+              title: 'Icon',
+              options: {
+                list: [
+                  {title: 'Film', value: 'film'},
+                  {title: 'Video Camera', value: 'videoCamera'},
+                  {title: 'Scissors', value: 'scissors'},
+                  {title: 'Sparkles', value: 'sparkles'},
+                  {title: 'Musical Note', value: 'musicalNote'},
+                  {title: 'Bolt (Speed)', value: 'bolt'},
+                  {title: 'Eye', value: 'eye'},
+                  {title: 'Clock', value: 'clock'},
+                  {title: 'Heart', value: 'heart'},
+                  {title: 'Star', value: 'star'},
+                ],
+              },
+            },
+          ],
+          preview: {
+            select: {
+              title: 'name',
+              subtitle: 'description',
+            },
+          },
+        },
+      ],
+    }),
+    defineField({
+      name: 'image',
+      title: 'Section Image',
       type: 'image',
       options: {
         hotspot: true,
       },
     }),
-    defineField({
-      name: 'skills',
-      title: 'Skills',
-      type: 'array',
-      of: [
-        defineField({
-          type: 'string',
-          name: 'skill',
-        }),
-      ],
-    }),
   ],
   preview: {
     select: {
-      title: 'title',
-      media: 'profileImage',
+      title: 'heading',
     },
   },
 })

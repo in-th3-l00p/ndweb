@@ -1,28 +1,32 @@
 import {defineType, defineField} from 'sanity'
-import {PhotoIcon} from '@heroicons/react/24/outline'
+import {RectangleStackIcon} from '@heroicons/react/24/outline'
 
 export const portfolio = defineType({
   name: 'portfolio',
   title: 'Portfolio Section Settings',
   type: 'document',
-  icon: PhotoIcon,
+  icon: RectangleStackIcon,
   fields: [
     defineField({
-      name: 'title',
-      title: 'Section Title',
+      name: 'eyebrow',
+      title: 'Eyebrow Text',
+      type: 'string',
+    }),
+    defineField({
+      name: 'heading',
+      title: 'Heading',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
-      title: 'Section Description',
+      title: 'Description',
       type: 'text',
     }),
-    defineField({
-      name: 'itemsPerPage',
-      title: 'Items Per Page',
-      type: 'number',
-      initialValue: 6,
-    }),
   ],
+  preview: {
+    select: {
+      title: 'heading',
+    },
+  },
 })
