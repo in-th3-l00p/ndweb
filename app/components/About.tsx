@@ -1,4 +1,7 @@
+'use client'
+
 import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
+import * as motion from 'motion/react-client'
 
 const features = [
     {
@@ -25,28 +28,61 @@ export default function About() {
             <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
                 <div className="lg:ml-auto lg:pt-4 lg:pl-4">
                     <div className="lg:max-w-lg">
-                        <h2 className="text-base/7 font-semibold text-cyan-600">Deploy faster</h2>
-                        <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: '-100px' }}
+                            transition={{ duration: 0.5 }}
+                            className="text-base/7 font-semibold text-cyan-600"
+                        >
+                            Deploy faster
+                        </motion.h2>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: '-100px' }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                            className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl"
+                        >
                             A better workflow
-                        </p>
-                        <p className="mt-6 text-lg/8 text-gray-600">
+                        </motion.p>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: '-100px' }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="mt-6 text-lg/8 text-gray-600"
+                        >
                             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
                             iste dolor cupiditate blanditiis ratione.
-                        </p>
+                        </motion.p>
                         <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none">
-                            {features.map((feature) => (
-                                <div key={feature.name} className="relative pl-9">
+                            {features.map((feature, index) => (
+                                <motion.div
+                                    key={feature.name}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true, margin: '-50px' }}
+                                    transition={{ duration: 0.4, delay: 0.1 * index }}
+                                    className="relative pl-9"
+                                >
                                     <dt className="inline font-semibold text-gray-900">
                                         <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-cyan-600" />
                                         {feature.name}
                                     </dt>{' '}
                                     <dd className="inline">{feature.description}</dd>
-                                </div>
+                                </motion.div>
                             ))}
                         </dl>
                     </div>
                 </div>
-                <div className="flex items-start justify-end lg:order-first">
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: '-100px' }}
+                    transition={{ duration: 0.6 }}
+                    className="flex items-start justify-end lg:order-first"
+                >
                     <img
                         alt="Product screenshot"
                         src="/image.png"
@@ -54,7 +90,7 @@ export default function About() {
                         height={1442}
                         className="w-xl max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-2xl"
                     />
-                </div>
+                </motion.div>
             </div>
         </div>
     )

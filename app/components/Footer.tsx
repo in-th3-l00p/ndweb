@@ -1,3 +1,7 @@
+'use client'
+
+import * as motion from 'motion/react-client'
+
 const navigation = [
   {
     name: 'Facebook',
@@ -64,20 +68,42 @@ const navigation = [
 
 export default function Footer() {
   return (
-    <footer className="bg-white">
+    <motion.footer
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.5 }}
+      className="bg-white"
+    >
       <div className="mx-auto max-w-7xl py-12 md:flex md:items-center md:justify-between">
         <div className="flex justify-center gap-x-6 md:order-2">
-          {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="text-gray-600 hover:text-gray-800">
+          {navigation.map((item, index) => (
+            <motion.a
+              key={item.name}
+              href={item.href}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              whileHover={{ scale: 1.15, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-gray-600 hover:text-gray-800"
+            >
               <span className="sr-only">{item.name}</span>
               <item.icon aria-hidden="true" className="size-6" />
-            </a>
+            </motion.a>
           ))}
         </div>
-        <p className="mt-8 text-center text-sm/6 text-gray-600 md:order-1 md:mt-0">
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-8 text-center text-sm/6 text-gray-600 md:order-1 md:mt-0"
+        >
           &copy; 2024 Your Company, Inc. All rights reserved.
-        </p>
+        </motion.p>
       </div>
-    </footer>
+    </motion.footer>
   )
 }

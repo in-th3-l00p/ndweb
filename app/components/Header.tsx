@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import * as motion from 'motion/react-client'
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -15,9 +16,19 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50 px-6 lg:px-8">
+    <motion.header
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="absolute inset-x-0 top-0 z-50 px-6 lg:px-8"
+    >
       <nav aria-label="Global" className="flex items-center justify-between py-6 w-full max-w-7xl mx-auto">
-        <div className="flex lg:flex-1">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex lg:flex-1"
+        >
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
@@ -26,7 +37,7 @@ export default function Header() {
               className="h-8 w-auto"
             />
           </a>
-        </div>
+        </motion.div>
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -38,17 +49,20 @@ export default function Header() {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900">
+          {navigation.map((item, index) => (
+            <motion.a
+              key={item.name}
+              href={item.href}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
+              className="text-sm/6 font-semibold text-gray-900"
+            >
               {item.name}
-            </a>
+            </motion.a>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm/6 font-semibold text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end"></div>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-50" />
@@ -84,18 +98,10 @@ export default function Header() {
                   </a>
                 ))}
               </div>
-              <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >
-                  Log in
-                </a>
-              </div>
             </div>
           </div>
         </DialogPanel>
       </Dialog>
-    </header>
+    </motion.header>
   )
 }
