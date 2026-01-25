@@ -67,7 +67,7 @@ export default function Contact({ data }: { data?: ContactData }) {
   const contactItems = data?.contactItems && data.contactItems.length > 0 ? data.contactItems : defaults.contactItems
 
   return (
-    <div id="contact" className="bg-white py-24 sm:py-32 max-w-7xl mx-auto">
+    <div id="contact" className="bg-white max-w-7xl mx-auto pt-48 lg:pt-96">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <motion.h2
