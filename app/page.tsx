@@ -18,9 +18,9 @@ export default async function Home() {
         <Hero data={data.hero} />
         <About data={data.about} />
         <Portfolio data={data.portfolio} items={data.portfolioItems} />
-        <Contact data={data.contact} />
+        <Contact data={data.contact} socialLinks={data.socialLinks} />
         <CTA data={data.cta} />
-        <Footer data={data.footer} />
+        <Footer data={data.footer} socialLinks={data.socialLinks} />
       </main>
     </>
   )

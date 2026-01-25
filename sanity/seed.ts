@@ -110,32 +110,6 @@ const seedData = {
     _id: 'footer',
     _type: 'footer',
     copyright: `© ${new Date().getFullYear()} David Stefan Nedelea. All rights reserved.`,
-    socialLinks: [
-      {
-        _key: 'social1',
-        name: 'Instagram',
-        url: 'https://instagram.com/davidnedelea',
-        platform: 'instagram',
-      },
-      {
-        _key: 'social2',
-        name: 'TikTok',
-        url: 'https://tiktok.com/@davidnedelea',
-        platform: 'tiktok',
-      },
-      {
-        _key: 'social3',
-        name: 'YouTube',
-        url: 'https://youtube.com/@davidnedelea',
-        platform: 'youtube',
-      },
-      {
-        _key: 'social4',
-        name: 'LinkedIn',
-        url: 'https://linkedin.com/in/davidnedelea',
-        platform: 'linkedin',
-      },
-    ],
   },
 
   contact: {
@@ -143,36 +117,6 @@ const seedData = {
     _type: 'contact',
     heading: 'Get in Touch',
     description: 'Ready to bring your vision to life? Reach out through any of these channels and let\'s create something amazing together.',
-    contactItems: [
-      {
-        _key: 'contact1',
-        name: 'Instagram',
-        value: '@davidnedelea',
-        url: 'https://instagram.com/davidnedelea',
-        platform: 'instagram',
-      },
-      {
-        _key: 'contact2',
-        name: 'LinkedIn',
-        value: 'David Nedelea',
-        url: 'https://linkedin.com/in/davidnedelea',
-        platform: 'linkedin',
-      },
-      {
-        _key: 'contact3',
-        name: 'Fiverr',
-        value: 'davidnedelea',
-        url: 'https://fiverr.com/davidnedelea',
-        platform: 'fiverr',
-      },
-      {
-        _key: 'contact4',
-        name: 'Book a Call',
-        value: 'cal.com/davidnedelea',
-        url: 'https://cal.com/davidnedelea',
-        platform: 'cal',
-      },
-    ],
   },
 
   cta: {
@@ -188,6 +132,68 @@ const seedData = {
       text: 'View Portfolio',
       link: '#portfolio',
     },
+  },
+
+  socialLinks: {
+    _id: 'socialLinks',
+    _type: 'socialLinks',
+    title: 'Social Links Settings',
+    links: [
+      {
+        _key: 'social1',
+        name: 'Instagram',
+        value: '@davidnedelea',
+        url: 'https://instagram.com/davidnedelea',
+        platform: 'instagram',
+        showInFooter: true,
+        showInContact: true,
+      },
+      {
+        _key: 'social2',
+        name: 'LinkedIn',
+        value: 'David Nedelea',
+        url: 'https://linkedin.com/in/davidnedelea',
+        platform: 'linkedin',
+        showInFooter: true,
+        showInContact: true,
+      },
+      {
+        _key: 'social3',
+        name: 'Fiverr',
+        value: 'davidnedelea',
+        url: 'https://fiverr.com/davidnedelea',
+        platform: 'fiverr',
+        showInFooter: false,
+        showInContact: true,
+      },
+      {
+        _key: 'social4',
+        name: 'Book a Call',
+        value: 'cal.com/davidnedelea',
+        url: 'https://cal.com/davidnedelea',
+        platform: 'cal',
+        showInFooter: false,
+        showInContact: true,
+      },
+      {
+        _key: 'social5',
+        name: 'TikTok',
+        value: '@davidnedelea',
+        url: 'https://tiktok.com/@davidnedelea',
+        platform: 'tiktok',
+        showInFooter: true,
+        showInContact: false,
+      },
+      {
+        _key: 'social6',
+        name: 'YouTube',
+        value: '@davidnedelea',
+        url: 'https://youtube.com/@davidnedelea',
+        platform: 'youtube',
+        showInFooter: true,
+        showInContact: false,
+      },
+    ],
   },
 
   // Note: Videos and thumbnails must be uploaded via Sanity Studio at /studio
@@ -263,6 +269,10 @@ async function seed() {
     console.log('📝 Creating CTA Section...')
     await client.createOrReplace(seedData.cta)
     console.log('   ✓ CTA section created')
+
+    console.log('📝 Creating Social Links Settings...')
+    await client.createOrReplace(seedData.socialLinks)
+    console.log('   ✓ Social Links created')
 
     console.log('📝 Creating Portfolio Items...')
     for (const item of seedData.portfolioItems) {

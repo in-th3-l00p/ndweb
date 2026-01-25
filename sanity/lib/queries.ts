@@ -35,14 +35,12 @@ export const HEADER_QUERY = defineQuery(`*[_type == "header"][0]{
 }`)
 
 export const FOOTER_QUERY = defineQuery(`*[_type == "footer"][0]{
-  copyright,
-  socialLinks
+  copyright
 }`)
 
 export const CONTACT_QUERY = defineQuery(`*[_type == "contact"][0]{
   heading,
-  description,
-  contactItems
+  description
 }`)
 
 export const CTA_QUERY = defineQuery(`*[_type == "cta"][0]{
@@ -50,6 +48,10 @@ export const CTA_QUERY = defineQuery(`*[_type == "cta"][0]{
   description,
   primaryCta,
   secondaryCta
+}`)
+
+export const SOCIAL_LINKS_QUERY = defineQuery(`*[_type == "socialLinks"][0]{
+  links
 }`)
 
 export const PAGE_DATA_QUERY = defineQuery(`{
@@ -80,8 +82,7 @@ export const PAGE_DATA_QUERY = defineQuery(`{
   },
   "contact": *[_type == "contact"][0]{
     heading,
-    description,
-    contactItems
+    description
   },
   "cta": *[_type == "cta"][0]{
     heading,
@@ -89,12 +90,12 @@ export const PAGE_DATA_QUERY = defineQuery(`{
     primaryCta,
     secondaryCta
   },
+  "socialLinks": *[_type == "socialLinks"][0].links,
   "header": *[_type == "header"][0]{
     logo,
     navigation
   },
   "footer": *[_type == "footer"][0]{
-    copyright,
-    socialLinks
+    copyright
   }
 }`)

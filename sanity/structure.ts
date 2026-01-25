@@ -24,7 +24,8 @@ export const structure: StructureResolver = (S) =>
             .title('Site Settings')
             .items([
               singletonListItem(S, 'header', 'Header & Navigation'),
-              singletonListItem(S, 'footer', 'Footer & Social Links'),
+              singletonListItem(S, 'footer', 'Footer'),
+              singletonListItem(S, 'socialLinks', 'Social Links'),
             ])
         ),
 
@@ -40,6 +41,8 @@ export const structure: StructureResolver = (S) =>
               singletonListItem(S, 'hero', 'Hero Section'),
               singletonListItem(S, 'about', 'About Section'),
               singletonListItem(S, 'portfolio', 'Portfolio Section Settings'),
+              singletonListItem(S, 'contact', 'Contact Section'),
+              singletonListItem(S, 'cta', 'CTA Section'),
             ])
         ),
 
