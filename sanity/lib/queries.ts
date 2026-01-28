@@ -54,7 +54,18 @@ export const SOCIAL_LINKS_QUERY = defineQuery(`*[_type == "socialLinks"][0]{
   links
 }`)
 
+export const SITE_SETTINGS_QUERY = defineQuery(`*[_type == "siteSettings"][0]{
+  title,
+  description,
+  favicon
+}`)
+
 export const PAGE_DATA_QUERY = defineQuery(`{
+  "siteSettings": *[_type == "siteSettings"][0]{
+    title,
+    description,
+    favicon
+  },
   "hero": *[_type == "hero"][0]{
     badge,
     heading,

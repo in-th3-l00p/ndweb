@@ -9,7 +9,8 @@ import {portfolioItem} from './portfolioItem'
 import {contact} from './contact'
 import {cta} from './cta'
 import {socialLinks} from './socialLinks'
+import {siteSettings} from './siteSettings'
 
 export const schema: {types: SchemaTypeDefinition[]} = {
-  types: [header, footer, hero, about, portfolio, portfolioItem, contact, cta, socialLinks],
+  types: [siteSettings, header, footer, hero, about, portfolio, portfolioItem, contact, cta, socialLinks],
 }
