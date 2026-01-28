@@ -6,4 +6,7 @@ import { client } from './client'
 
 export const { sanityFetch, SanityLive } = defineLive({
   client,
+  serverUrl: process.env.NEXT_PUBLIC_VERCEL_URL
+    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+    : 'http://localhost:3000',
 });

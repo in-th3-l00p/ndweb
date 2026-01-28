@@ -70,7 +70,7 @@ export default function About({ data }: { data?: AboutData }) {
   const heading = data?.heading ?? defaults.heading
   const description = data?.description ?? defaults.description
   const features = data?.features ?? defaults.features
-  const imageUrl = data?.image ? urlFor(data.image).url() : '/image.png'
+  const imageUrl = data?.image ? urlFor(data.image).width(1216).height(721).fit('max').url() : '/image.png'
 
   return (
     <div id="about" className="bg-white max-w-7xl mx-auto pt-32 lg:pt-48 px-6 lg:px-8">
