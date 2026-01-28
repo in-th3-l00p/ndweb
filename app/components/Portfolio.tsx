@@ -128,9 +128,9 @@ export default function Portfolio({ data, items }: { data?: PortfolioData; items
   const portfolioMore = data?.portfolioMore ?? defaults.portfolioMore
 
   return (
-    <section id="portfolio" className="bg-white pt-32 lg:pt-48">
+    <section id="portfolio" className="bg-white pt-32 lg:pt-48 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="mx-auto max-w-2xl text-center px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -170,7 +170,7 @@ export default function Portfolio({ data, items }: { data?: PortfolioData; items
           </div>
         </div>
 
-        <div className="hidden md:grid mx-auto mt-16 max-w-2xl grid-cols-2 gap-4 sm:mt-20 sm:gap-6 lg:mx-0 lg:max-w-none lg:grid-cols-4 px-6 lg:px-8">
+        <div className="hidden md:grid mx-auto mt-16 max-w-2xl grid-cols-2 gap-4 sm:mt-20 sm:gap-6 lg:mx-0 lg:max-w-none lg:grid-cols-4">
           {videos.map((video, index) => (
             <VideoCard key={video._id} video={video} index={index} />
           ))}
