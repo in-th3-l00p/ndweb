@@ -2,8 +2,10 @@
 
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
 import * as motion from 'motion/react-client'
+import { urlFor } from '@/sanity/lib/image'
 
 interface HeroData {
+  avatar?: { asset: { _ref: string } }
   badge?: {
     highlight?: string
     text?: string
@@ -36,12 +38,14 @@ const defaults = {
 }
 
 export default function Hero({ data }: { data?: HeroData }) {
+  const avatar = data?.avatar
   const badge = data?.badge ?? defaults.badge
   const heading = data?.heading ?? defaults.heading
   const description = data?.description ?? defaults.description
   const primaryCta = data?.primaryCta ?? defaults.primaryCta
   const secondaryCta = data?.secondaryCta ?? defaults.secondaryCta
   const videoUrl = data?.videoUrl ?? defaults.videoUrl
+  const avatarUrl = avatar ? urlFor(avatar).width(96).height(96).url() : null
 
   return (
     <div id="#" className="relative isolate bg-white flex flex-col justify-center pt-32 lg:pt-48 px-6 lg:px-8">
@@ -75,23 +79,32 @@ export default function Hero({ data }: { data?: HeroData }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex"
+            className="flex flex-col items-start gap-4"
           >
-            <div className="relative flex items-center gap-x-4 rounded-full bg-white px-4 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              <span className="font-semibold text-cyan-600">{badge.highlight}</span>
-              <span aria-hidden="true" className="h-4 w-px bg-gray-900/10" />
-              <a href={badge.link || '#'} className="flex items-center gap-x-1">
-                <span aria-hidden="true" className="absolute inset-0" />
-                {badge.text}
-                <ChevronRightIcon aria-hidden="true" className="-mr-2 size-5 text-gray-400" />
-              </a>
+            <div className="flex items-center gap-6 justify-center">
+              {avatarUrl && (
+                <img
+                  alt="Profile"
+                  src={avatarUrl}
+                  className="inline-block size-14 lg:size-16 rounded-full border shadow rounded-full outline -outline-offset-1 outline-black/5"
+                />
+              )}
+              <div className="relative flex items-center gap-x-4 rounded-full bg-white px-4 py-1 text-xs/6 lg:text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                <span className="font-semibold text-cyan-600">{badge.highlight}</span>
+                <span aria-hidden="true" className="h-4 w-px bg-gray-900/10" />
+                <a href={badge.link || '#'} className="flex items-center gap-x-1">
+                  <span aria-hidden="true" className="absolute inset-0" />
+                  {badge.text}
+                  <ChevronRightIcon aria-hidden="true" className="-mr-2 size-5 text-gray-400" />
+                </a>
+              </div>
             </div>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-10 text-5xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-7xl"
+            className="mt-8 text-5xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-7xl"
           >
             {heading}
           </motion.h1>
@@ -124,7 +137,7 @@ export default function Hero({ data }: { data?: HeroData }) {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 sm:mt-24 lg:mt-0 lg:shrink-0 lg:grow flex justify-center lg:justify-end"
+          className="hidden lg:flex lg:mt-0 lg:shrink-0 lg:grow justify-center lg:justify-end"
         >
           <svg role="img" viewBox="0 0 366 729" className="mx-auto w-[286px] max-w-full drop-shadow-xl">
             <title>App screenshot</title>

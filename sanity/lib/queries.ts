@@ -1,6 +1,7 @@
 import { defineQuery } from 'next-sanity'
 
 export const HERO_QUERY = defineQuery(`*[_type == "hero"][0]{
+  avatar,
   badge,
   heading,
   description,
@@ -67,6 +68,7 @@ export const PAGE_DATA_QUERY = defineQuery(`{
     favicon
   },
   "hero": *[_type == "hero"][0]{
+    avatar,
     badge,
     heading,
     description,

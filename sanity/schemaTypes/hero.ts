@@ -8,6 +8,15 @@ export const hero = defineType({
   icon: SparklesIcon,
   fields: [
     defineField({
+      name: 'avatar',
+      title: 'Avatar Image',
+      type: 'image',
+      description: 'Profile picture displayed above the badge',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'badge',
       title: 'Badge',
       type: 'object',
