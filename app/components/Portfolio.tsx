@@ -164,18 +164,18 @@ export default function Portfolio({ data, items }: { data?: PortfolioData; items
           ))}
         </div>
 
-        <motion.a
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-lg lg:text-xl tracking-tight text-balance block text-center text-cyan-600 hover:text-cyan-800 transition-colors mt-8 flex items-center justify-center gap-3 group"
-          href={data?.portfolioMoreLink || defaults.portfolioMoreLink}
-        >
-          <div className="bg-cyan-600 group-hover:bg-cyan-800 w-4 h-[2px]"></div>
-          {portfolioMore}
-          <div className="bg-cyan-600 group-hover:bg-cyan-800 w-4 h-[2px]"></div>
-        </motion.a>
+        <div className="flex justify-center mt-8">
+          <motion.a
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            href={data?.portfolioMoreLink || defaults.portfolioMoreLink}
+            className="rounded-md bg-cyan-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-cyan-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
+          >
+            {portfolioMore}
+          </motion.a>
+        </div>
       </div>
     </section>
   )
