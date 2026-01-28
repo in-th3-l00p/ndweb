@@ -160,8 +160,7 @@ export default function Portfolio({ data, items }: { data?: PortfolioData; items
           </motion.p>
         </div>
 
-        {/* Mobile: Horizontal scrolling carousel */}
-        <div className="mt-16 sm:mt-20 md:hidden overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-6 px-6">
+        <div className="mt-16 sm:mt-20 md:hidden overflow-x-auto snap-x snap-mandatory scrollbar-hide">
           <div className="flex gap-4 pb-4">
             {videos.map((video, index) => (
               <div key={video._id} className="flex-shrink-0 w-[70vw] snap-center">
@@ -171,7 +170,6 @@ export default function Portfolio({ data, items }: { data?: PortfolioData; items
           </div>
         </div>
 
-        {/* Desktop: Grid layout */}
         <div className="hidden md:grid mx-auto mt-16 max-w-2xl grid-cols-2 gap-4 sm:mt-20 sm:gap-6 lg:mx-0 lg:max-w-none lg:grid-cols-4">
           {videos.map((video, index) => (
             <VideoCard key={video._id} video={video} index={index} />
