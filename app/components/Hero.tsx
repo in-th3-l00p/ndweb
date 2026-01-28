@@ -48,7 +48,7 @@ export default function Hero({ data }: { data?: HeroData }) {
   const avatarUrl = avatar ? urlFor(avatar).width(96).height(96).url() : null
 
   return (
-    <div id="#" className="relative isolate bg-white flex flex-col justify-center pt-32 lg:pt-48 px-6 lg:px-8">
+    <div id="#" className="relative isolate bg-white flex flex-col justify-center lg:pt-40 px-6 lg:px-8">
       <svg
         aria-hidden="true"
         className="absolute inset-0 -z-10 size-full mask-[radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-gray-200"
@@ -73,7 +73,7 @@ export default function Hero({ data }: { data?: HeroData }) {
         </svg>
         <rect fill="url(#83fd4e5a-9d52-42fc-97b6-718e5d7ee527)" width="100%" height="100%" strokeWidth={0} />
       </svg>
-      <div className="mx-auto w-full max-w-7xl lg:flex lg:items-center lg:justify-between lg:gap-x-10 pt-32 sm:pt-0">
+      <div className="mx-auto w-full max-w-7xl lg:flex lg:items-center lg:justify-between lg:gap-x-10 pt-32 lg:pt-0">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
