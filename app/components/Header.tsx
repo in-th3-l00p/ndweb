@@ -21,6 +21,7 @@ const defaultNavigation = [
 export default function Header({ data }: { data?: HeaderData }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const navigation = data?.navigation ?? defaultNavigation
+  console.log(data);
   const logoUrl = data?.logo ? urlFor(data.logo).url() : 'https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=cyan&shade=600'
 
   return (
@@ -42,7 +43,7 @@ export default function Header({ data }: { data?: HeaderData }) {
             <img
               alt=""
               src={logoUrl}
-              className="h-8 w-auto"
+              className="h-6 w-auto"
             />
           </a>
         </motion.div>
