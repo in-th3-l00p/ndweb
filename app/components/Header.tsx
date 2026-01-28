@@ -82,7 +82,7 @@ export default function Header({ data }: { data?: HeaderData }) {
               <img
                 alt=""
                 src={logoUrl}
-                className="h-8 w-auto"
+                className="h-6 w-auto"
               />
             </a>
             <button

@@ -33,7 +33,7 @@ export default function Contact({ data, socialLinks }: ContactProps) {
     : defaultSocialLinks
 
   return (
-    <div id="contact" className="bg-white max-w-7xl mx-auto pt-32 lg:pt-48">
+    <div id="contact" className="bg-white max-w-7xl mx-auto pt-32 lg:pt-48 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <motion.h2

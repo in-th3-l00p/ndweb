@@ -13,7 +13,7 @@ export default async function Home() {
 
   return (
     <>
-      <main className="min-h-screen bg-white px-6 lg:px-8">
+      <main className="min-h-screen bg-white">
         <Header data={data.header} />
         <Hero data={data.hero} />
         <About data={data.about} />
