@@ -74,9 +74,10 @@ function VideoCard({ video, index }: { video: PortfolioItem; index: number }) {
 
   const handleMouseClick = () => {
     if (videoRef.current) {
-      if (videoRef.current.paused) {
+      if (!running) {
         setRunning(true);
-        videoRef.current.play()
+        if (!videoRef.current.paused)
+          videoRef.current?.play()
       } else {
         setRunning(false);
         videoRef.current.currentTime = 0
