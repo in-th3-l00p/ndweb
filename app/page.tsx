@@ -5,11 +5,11 @@ import Contact from './components/Contact'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 import Header from './components/Header'
-import { client } from '@/sanity/lib/client'
+import { sanityFetch } from '@/sanity/lib/live'
 import { PAGE_DATA_QUERY } from '@/sanity/lib/queries'
 
 export default async function Home() {
-  const data = await client.fetch(PAGE_DATA_QUERY)
+  const { data } = await sanityFetch({ query: PAGE_DATA_QUERY })
 
   return (
     <>

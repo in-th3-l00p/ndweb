@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { SITE_SETTINGS_QUERY } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const siteSettings = await client.fetch(SITE_SETTINGS_QUERY);
+  const { data: siteSettings } = await sanityFetch({ query: SITE_SETTINGS_QUERY });
 
   return {
     title: siteSettings?.title || "Nedelea David",
@@ -42,6 +42,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
         {children}
+        <SanityLive />
       </body>
     </html>
   );
