@@ -103,7 +103,7 @@ function VideoCard({ video, index }: { video: PortfolioItem; index: number }) {
           ref={videoRef}
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           className="absolute inset-0 h-full w-full object-cover"
           src={video.videoUrl}
         />
