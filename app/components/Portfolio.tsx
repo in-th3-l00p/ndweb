@@ -1,6 +1,7 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { PlayIcon } from '@heroicons/react/20/solid'
+import { useEffect, useRef, useState } from 'react'
 import * as motion from 'motion/react-client'
 import type { PortfolioData, PortfolioItem } from '@/app/lib/content'
 
@@ -9,21 +10,25 @@ const defaultVideos = [
     _id: '1',
     title: 'Lifestyle Reel',
     videoUrl: '/videos/lifestyle-reel.mp4',
+    posterUrl: '/videos/posters/lifestyle-reel.jpg',
   },
   {
     _id: '2',
     title: 'Ai Automatization',
     videoUrl: '/videos/ai-automatization.mp4',
+    posterUrl: '/videos/posters/ai-automatization.jpg',
   },
   {
     _id: '3',
     title: 'BingX Romania',
     videoUrl: '/videos/bingx-romania.mp4',
+    posterUrl: '/videos/posters/bingx-romania.jpg',
   },
   {
     _id: '4',
     title: 'Podcast Type',
     videoUrl: '/videos/podcast-type.mp4',
+    posterUrl: '/videos/posters/podcast-type.jpg',
   },
 ]
 
@@ -35,32 +40,34 @@ const defaults = {
   portfolioMoreLink: 'https://drive.google.com/drive/u/4/folders/1RU0I5CAyNH4g6rthsazXB8f5qBpzKMNF',
 }
 
-function VideoCard({ video, index }: { video: PortfolioItem; index: number }) {
+function VideoCard({
+  video,
+  index,
+  active,
+  onActivate,
+}: {
+  video: PortfolioItem
+  index: number
+  active: boolean
+  onActivate: () => void
+}) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [running, setRunning] = useState(false);
+  const [canPlay, setCanPlay] = useState(false)
 
-  const handleMouseEnter = () => {
-    if (!running && videoRef)
-      videoRef.current?.play()
-  }
+  useEffect(() => {
+    const videoEl = videoRef.current
+    if (!videoEl) return
 
-  const handleMouseLeave = () => {
-    if (!running && videoRef)
-      videoRef.current?.pause();
-  }
-
-  const handleMouseClick = () => {
-    if (videoRef.current) {
-      if (!running) {
-        setRunning(true);
-        videoRef.current?.play()
-      } else {
-        setRunning(false);
-        videoRef.current.currentTime = 0
-        videoRef.current.pause()
-      }
+    if (active) {
+      void videoEl.play().catch(() => {
+        // Browsers can block programmatic playback. Native controls remain available.
+      })
+      return
     }
-  }
+
+    videoEl.pause()
+    videoEl.currentTime = 0
+  }, [active])
 
   return (
     <motion.div
@@ -69,19 +76,18 @@ function VideoCard({ video, index }: { video: PortfolioItem; index: number }) {
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
       whileHover={{ y: -8 }}
-      onMouseUp={handleMouseClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className="group relative aspect-[9/16] overflow-hidden rounded-2xl bg-gray-900 cursor-pointer"
+      className="group relative aspect-[9/16] overflow-hidden rounded-2xl bg-gray-950 shadow-lg ring-1 ring-gray-900/10 snap-center"
     >
       {video.videoUrl ? (
         <video
           ref={videoRef}
           loop
-          autoPlay
           muted
+          controls={active}
           playsInline
-          preload="auto"
+          preload="metadata"
+          poster={video.posterUrl}
+          onCanPlay={() => setCanPlay(true)}
           className="absolute inset-0 h-full w-full object-cover"
           src={video.videoUrl}
         />
@@ -91,8 +97,22 @@ function VideoCard({ video, index }: { video: PortfolioItem; index: number }) {
         </div>
       )}
 
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+      {!active && (
+        <button
+          type="button"
+          onClick={onActivate}
+          className="absolute inset-0 flex min-h-11 min-w-11 items-center justify-center bg-black/10 text-white transition hover:bg-black/0 focus-visible:outline-2 focus-visible:outline-offset-[-6px] focus-visible:outline-white"
+          aria-label={`Play ${video.title}`}
+        >
+          <span className="flex size-14 items-center justify-center rounded-full bg-white/90 text-gray-950 shadow-lg ring-1 ring-white/40 backdrop-blur-sm transition group-hover:scale-105">
+            <PlayIcon aria-hidden="true" className="ml-0.5 size-7" />
+          </span>
+        </button>
+      )}
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-4">
         <h3 className="text-sm font-medium text-white">{video.title}</h3>
+        <p className="mt-1 text-xs text-white/70">{active ? 'Use the player controls' : canPlay ? 'Tap to play' : 'Loading preview'}</p>
       </div>
     </motion.div>
   )
@@ -104,6 +124,7 @@ export default function Portfolio({ data, items }: { data?: PortfolioData; items
   const description = data?.description ?? defaults.description
   const videos = items && items.length > 0 ? items : defaultVideos
   const portfolioMore = data?.portfolioMore ?? defaults.portfolioMore
+  const [activeVideoId, setActiveVideoId] = useState<string | null>(null)
 
   return (
     <section id="portfolio" className="bg-white pt-32 lg:pt-48 px-6 lg:px-8">
@@ -138,19 +159,15 @@ export default function Portfolio({ data, items }: { data?: PortfolioData; items
           </motion.p>
         </div>
 
-        <div className="mt-16 sm:mt-20 md:hidden overflow-x-auto snap-x snap-mandatory scrollbar-hide">
-          <div className="flex gap-4 pb-4">
-            {videos.map((video, index) => (
-              <div key={video._id} className="flex-shrink-0 w-[70vw] snap-center">
-                <VideoCard video={video} index={index} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="hidden md:grid mx-auto mt-16 max-w-2xl grid-cols-2 gap-4 sm:mt-20 sm:gap-6 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+        <div className="mx-auto mt-12 grid max-w-2xl grid-flow-col auto-cols-[minmax(16rem,76vw)] gap-4 overflow-x-auto overscroll-x-contain pb-4 snap-x snap-mandatory sm:mt-16 sm:auto-cols-[20rem] md:mt-20 md:max-w-none md:grid-flow-row md:auto-cols-auto md:grid-cols-2 md:overflow-visible md:pb-0 lg:mx-0 lg:grid-cols-4">
           {videos.map((video, index) => (
-            <VideoCard key={video._id} video={video} index={index} />
+            <VideoCard
+              key={video._id}
+              video={video}
+              index={index}
+              active={activeVideoId === video._id}
+              onActivate={() => setActiveVideoId(video._id)}
+            />
           ))}
         </div>
 

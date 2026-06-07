@@ -49,6 +49,7 @@ export interface PortfolioItem {
   _id: string
   title: string
   videoUrl: string
+  posterUrl: string
 }
 
 export interface ContactData {
@@ -150,21 +151,25 @@ export const pageContent = {
       _id: 'portfolio-item-1',
       title: 'Lifestyle Reel',
       videoUrl: '/videos/lifestyle-reel.mp4',
+      posterUrl: '/videos/posters/lifestyle-reel.jpg',
     },
     {
       _id: 'portfolio-item-2',
       title: 'Ai Automatization',
       videoUrl: '/videos/ai-automatization.mp4',
+      posterUrl: '/videos/posters/ai-automatization.jpg',
     },
     {
       _id: 'portfolio-item-3',
       title: 'BingX Romania',
       videoUrl: '/videos/bingx-romania.mp4',
+      posterUrl: '/videos/posters/bingx-romania.jpg',
     },
     {
       _id: 'portfolio-item-4',
       title: 'Podcast Type',
       videoUrl: '/videos/podcast-type.mp4',
+      posterUrl: '/videos/posters/podcast-type.jpg',
     },
   ] satisfies PortfolioItem[],
 
