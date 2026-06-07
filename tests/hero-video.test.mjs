@@ -12,7 +12,7 @@ test('hero uses optimized local 16:9 video with instant poster', async () => {
   assert.match(content, /videoUrl:\s*'\/videos\/hero-final-sample\.mp4'/)
   assert.match(content, /posterUrl:\s*'\/videos\/posters\/hero-final-sample\.jpg'/)
   assert.match(hero, /poster=\{posterUrl\}/)
-  assert.match(hero, /preload="auto"/)
+  assert.match(hero, /preload="metadata"/)
   assert.match(hero, /aspect-video/)
   assert.doesNotMatch(hero, /viewBox="0 0 366 729"/)
 
