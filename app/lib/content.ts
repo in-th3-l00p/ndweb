@@ -23,6 +23,7 @@ export interface HeroData {
     link: string
   }
   videoUrl: string
+  posterUrl: string
 }
 
 export interface AboutData {
@@ -106,7 +107,8 @@ export const pageContent = {
       text: 'About Me',
       link: '#about',
     },
-    videoUrl: '/videos/hero.mp4',
+    videoUrl: '/videos/hero-final-sample.mp4',
+    posterUrl: '/videos/posters/hero-final-sample.jpg',
   } satisfies HeroData,
 
   about: {
