@@ -7,33 +7,23 @@ import type { PortfolioData, PortfolioItem } from '@/app/lib/content'
 const defaultVideos = [
   {
     _id: '1',
-    title: 'Brand Story Edit',
-    videoUrl: 'https://videos.pexels.com/video-files/3571264/3571264-uhd_1440_2732_30fps.mp4',
+    title: 'Lifestyle Reel',
+    videoUrl: '/videos/lifestyle-reel.mp4',
   },
   {
     _id: '2',
-    title: 'Product Launch',
-    videoUrl: 'https://videos.pexels.com/video-files/4763824/4763824-uhd_1440_2560_24fps.mp4',
+    title: 'Ai Automatization',
+    videoUrl: '/videos/ai-automatization.mp4',
   },
   {
     _id: '3',
-    title: 'Lifestyle Reel',
-    videoUrl: 'https://videos.pexels.com/video-files/5377684/5377684-uhd_1440_2560_25fps.mp4',
+    title: 'BingX Romania',
+    videoUrl: '/videos/bingx-romania.mp4',
   },
   {
     _id: '4',
-    title: 'Travel Montage',
-    videoUrl: 'https://videos.pexels.com/video-files/4434242/4434242-uhd_1440_2732_24fps.mp4',
-  },
-  {
-    _id: '5',
-    title: 'Fashion Edit',
-    videoUrl: 'https://videos.pexels.com/video-files/4057411/4057411-uhd_1440_2560_25fps.mp4',
-  },
-  {
-    _id: '6',
-    title: 'Music Video',
-    videoUrl: 'https://videos.pexels.com/video-files/4536366/4536366-uhd_1440_2560_25fps.mp4',
+    title: 'Podcast Type',
+    videoUrl: '/videos/podcast-type.mp4',
   },
 ]
 
@@ -63,8 +53,7 @@ function VideoCard({ video, index }: { video: PortfolioItem; index: number }) {
     if (videoRef.current) {
       if (!running) {
         setRunning(true);
-        if (!videoRef.current.paused)
-          videoRef.current?.play()
+        videoRef.current?.play()
       } else {
         setRunning(false);
         videoRef.current.currentTime = 0
@@ -89,6 +78,8 @@ function VideoCard({ video, index }: { video: PortfolioItem; index: number }) {
         <video
           ref={videoRef}
           loop
+          autoPlay
+          muted
           playsInline
           preload="auto"
           className="absolute inset-0 h-full w-full object-cover"

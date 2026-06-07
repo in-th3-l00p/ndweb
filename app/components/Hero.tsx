@@ -15,7 +15,7 @@ const defaults = {
   description: 'Professional video editor specializing in short-form content, brand storytelling, and social media videos. I transform raw footage into captivating stories that engage audiences and drive results.',
   primaryCta: { text: 'View My Work', link: '#portfolio' },
   secondaryCta: { text: 'About Me', link: '#about' },
-  videoUrl: 'https://videos.pexels.com/video-files/3571264/3571264-uhd_1440_2732_30fps.mp4',
+  videoUrl: '/videos/hero.mp4',
 }
 
 export default function Hero({ data }: { data?: HeroData }) {
