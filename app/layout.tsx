@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   title: siteSettings.title,
   description: siteSettings.description,
   icons: {
-    icon: '/icon.svg',
-    apple: '/apple-icon.svg',
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
   },
 };
 

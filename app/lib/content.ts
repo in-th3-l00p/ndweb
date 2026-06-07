@@ -82,6 +82,7 @@ export const siteSettings = {
 
 export const pageContent = {
   header: {
+    logoUrl: '/brand/logo.jpg',
     navigation: [
       { name: 'Home', href: '#' },
       { name: 'About', href: '#about' },

@@ -55,8 +55,8 @@ export default function Hero({ data }: { data?: HeroData }) {
         </svg>
         <rect fill="url(#83fd4e5a-9d52-42fc-97b6-718e5d7ee527)" width="100%" height="100%" strokeWidth={0} />
       </svg>
-      <div className="mx-auto w-full max-w-7xl lg:flex lg:items-center lg:justify-between lg:gap-x-10 pt-32 lg:pt-0">
-        <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
+      <div className="mx-auto grid w-full max-w-7xl gap-y-16 pt-32 lg:grid lg:grid-cols-[minmax(28rem,0.95fr)_minmax(32rem,1.05fr)] lg:items-center lg:gap-x-14 lg:pt-0">
+        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -121,7 +121,7 @@ export default function Hero({ data }: { data?: HeroData }) {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 w-full lg:mt-0 lg:flex lg:shrink-0 lg:grow lg:justify-end"
+          className="w-full lg:flex lg:justify-end"
         >
           <div className="relative mx-auto w-full max-w-[42rem] rounded-[2rem] bg-gray-900 p-2 shadow-2xl ring-1 ring-gray-950/15 sm:rounded-[2.5rem] sm:p-3 lg:mx-0">
             <div className="absolute left-1/2 top-1.5 z-10 h-1.5 w-20 -translate-x-1/2 rounded-full bg-gray-700 sm:top-2 sm:h-2 sm:w-24" />

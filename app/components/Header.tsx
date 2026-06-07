@@ -17,7 +17,7 @@ const defaultNavigation = [
 export default function Header({ data }: { data?: HeaderData }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const navigation = data?.navigation ?? defaultNavigation
-  const logoUrl = data?.logoUrl ?? '/window.svg'
+  const logoUrl = data?.logoUrl ?? '/brand/logo.jpg'
 
   return (
     <motion.header
@@ -38,9 +38,10 @@ export default function Header({ data }: { data?: HeaderData }) {
             <Image
               alt=""
               src={logoUrl}
-              width={24}
-              height={24}
-              className="h-6 w-auto"
+              width={500}
+              height={329}
+              priority
+              className="h-10 w-auto"
             />
           </a>
         </motion.div>
@@ -92,9 +93,10 @@ export default function Header({ data }: { data?: HeaderData }) {
               <Image
                 alt=""
                 src={logoUrl}
-                width={24}
-                height={24}
-                className="h-6 w-auto"
+                width={500}
+                height={329}
+                priority
+                className="h-10 w-auto"
               />
             </a>
             <button
