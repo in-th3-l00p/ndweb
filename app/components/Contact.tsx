@@ -5,10 +5,9 @@ import { socialIcons, type SocialLink } from '@/app/lib/socialIcons'
 import type { ContactData } from '@/app/lib/content'
 
 const defaultSocialLinks: SocialLink[] = [
-  { name: 'Instagram', value: '@davidnedelea', url: 'https://instagram.com/davidnedelea', platform: 'instagram', showInContact: true },
-  { name: 'LinkedIn', value: 'David Nedelea', url: 'https://linkedin.com/in/davidnedelea', platform: 'linkedin', showInContact: true },
-  { name: 'Fiverr', value: 'davidnedelea', url: 'https://fiverr.com/davidnedelea', platform: 'fiverr', showInContact: true },
-  { name: 'Book a Call', value: 'cal.com/davidnedelea', url: 'https://cal.com/davidnedelea', platform: 'cal', showInContact: true },
+  { name: 'Instagram', value: '@_david.stefan_', url: 'https://www.instagram.com/_david.stefan_?igsh=MXNxMHhjZHd5YnZmbQ%3D%3D&utm_source=qr', platform: 'instagram', showInContact: true },
+  { name: 'TikTok', value: '@davidmotiveaza', url: 'https://www.tiktok.com/@davidmotiveaza?_r=1&_t=ZN-9713OUO2TMU', platform: 'tiktok', showInContact: true },
+  { name: 'Email', value: 'nedeleadavid22@yahoo.com', url: 'mailto:nedeleadavid22@yahoo.com', platform: 'email', showInContact: true },
 ]
 
 const defaults = {

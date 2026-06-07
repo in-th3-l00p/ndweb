@@ -5,10 +5,9 @@ import { socialIcons, type SocialLink } from '@/app/lib/socialIcons'
 import type { FooterData } from '@/app/lib/content'
 
 const defaultLinks: SocialLink[] = [
-  { name: 'Instagram', url: '#', platform: 'instagram', showInFooter: true },
-  { name: 'TikTok', url: '#', platform: 'tiktok', showInFooter: true },
-  { name: 'YouTube', url: '#', platform: 'youtube', showInFooter: true },
-  { name: 'LinkedIn', url: '#', platform: 'linkedin', showInFooter: true },
+  { name: 'Instagram', url: 'https://www.instagram.com/_david.stefan_?igsh=MXNxMHhjZHd5YnZmbQ%3D%3D&utm_source=qr', platform: 'instagram', showInFooter: true },
+  { name: 'TikTok', url: 'https://www.tiktok.com/@davidmotiveaza?_r=1&_t=ZN-9713OUO2TMU', platform: 'tiktok', showInFooter: true },
+  { name: 'Email', url: 'mailto:nedeleadavid22@yahoo.com', platform: 'email', showInFooter: true },
 ]
 
 interface FooterProps {
@@ -33,7 +32,7 @@ export default function Footer({ data, socialLinks }: FooterProps) {
       <div className="mx-auto max-w-7xl md:flex md:items-center md:justify-between pt-32 lg:pt-48 pb-12">
         <div className="flex justify-center gap-x-6 md:order-2">
           {links.map((item, index) => {
-            const IconComponent = socialIcons[item.platform || 'github']
+            const IconComponent = socialIcons[item.platform || 'email']
             if (!IconComponent) return null
             return (
               <motion.a
