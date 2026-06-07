@@ -2,20 +2,7 @@
 
 import { useRef, useState } from 'react'
 import * as motion from 'motion/react-client'
-
-interface PortfolioData {
-  eyebrow?: string
-  heading?: string
-  description?: string
-  portfolioMore?: string
-  portfolioMoreLink?: string
-}
-
-interface PortfolioItem {
-  _id: string
-  title?: string
-  videoUrl?: string
-}
+import type { PortfolioData, PortfolioItem } from '@/app/lib/content'
 
 const defaultVideos = [
   {

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import {
   FilmIcon,
   VideoCameraIcon,
@@ -13,7 +14,7 @@ import {
   StarIcon
 } from '@heroicons/react/20/solid'
 import * as motion from 'motion/react-client'
-import { urlFor } from '@/sanity/lib/image'
+import type { AboutData } from '@/app/lib/content'
 
 const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   film: FilmIcon,
@@ -26,18 +27,6 @@ const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>
   clock: ClockIcon,
   heart: HeartIcon,
   star: StarIcon,
-}
-
-interface AboutData {
-  eyebrow?: string
-  heading?: string
-  description?: string
-  features?: {
-    name?: string
-    description?: string
-    icon?: string
-  }[]
-  image?: { asset: { _ref: string } }
 }
 
 const defaultFeatures = [
@@ -70,7 +59,7 @@ export default function About({ data }: { data?: AboutData }) {
   const heading = data?.heading ?? defaults.heading
   const description = data?.description ?? defaults.description
   const features = data?.features ?? defaults.features
-  const imageUrl = data?.image ? urlFor(data.image).width(1216).height(721).fit('max').url() : '/image.png'
+  const imageUrl = data?.imageUrl ?? '/image.png'
 
   return (
     <div id="about" className="bg-white max-w-7xl mx-auto pt-32 lg:pt-48 px-6 lg:px-8">
@@ -134,7 +123,7 @@ export default function About({ data }: { data?: AboutData }) {
           transition={{ duration: 0.6 }}
           className="flex items-start self-center justify-end lg:order-first"
         >
-          <img
+          <Image
             alt="Product screenshot"
             src={imageUrl}
             width={2432}

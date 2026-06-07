@@ -1,19 +1,7 @@
 'use client'
 
 import * as motion from 'motion/react-client'
-
-interface CTAData {
-  heading?: string
-  description?: string
-  primaryCta?: {
-    text?: string
-    link?: string
-  }
-  secondaryCta?: {
-    text?: string
-    link?: string
-  }
-}
+import type { CTAData } from '@/app/lib/content'
 
 const defaults = {
   heading: 'Ready to elevate your content?',

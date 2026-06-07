@@ -5,22 +5,19 @@ import Contact from './components/Contact'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 import Header from './components/Header'
-import { sanityFetch } from '@/sanity/lib/live'
-import { PAGE_DATA_QUERY } from '@/sanity/lib/queries'
+import { pageContent } from '@/app/lib/content'
 
-export default async function Home() {
-  const { data } = await sanityFetch({ query: PAGE_DATA_QUERY })
-
+export default function Home() {
   return (
     <>
       <main className="min-h-screen bg-white">
-        <Header data={data.header} />
-        <Hero data={data.hero} />
-        <About data={data.about} />
-        <Portfolio data={data.portfolio} items={data.portfolioItems} />
-        <Contact data={data.contact} socialLinks={data.socialLinks} />
-        <CTA data={data.cta} />
-        <Footer data={data.footer} socialLinks={data.socialLinks} />
+        <Header data={pageContent.header} />
+        <Hero data={pageContent.hero} />
+        <About data={pageContent.about} />
+        <Portfolio data={pageContent.portfolio} items={pageContent.portfolioItems} />
+        <Contact data={pageContent.contact} socialLinks={pageContent.socialLinks} />
+        <CTA data={pageContent.cta} />
+        <Footer data={pageContent.footer} socialLinks={pageContent.socialLinks} />
       </main>
     </>
   )

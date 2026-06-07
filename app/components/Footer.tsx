@@ -2,10 +2,7 @@
 
 import * as motion from 'motion/react-client'
 import { socialIcons, type SocialLink } from '@/app/lib/socialIcons'
-
-interface FooterData {
-  copyright?: string
-}
+import type { FooterData } from '@/app/lib/content'
 
 const defaultLinks: SocialLink[] = [
   { name: 'Instagram', url: '#', platform: 'instagram', showInFooter: true },

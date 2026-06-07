@@ -1,28 +1,9 @@
 'use client'
 
+import Image from 'next/image'
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
 import * as motion from 'motion/react-client'
-import { urlFor } from '@/sanity/lib/image'
-
-interface HeroData {
-  avatar?: { asset: { _ref: string } }
-  badge?: {
-    highlight?: string
-    text?: string
-    link?: string
-  }
-  heading?: string
-  description?: string
-  primaryCta?: {
-    text?: string
-    link?: string
-  }
-  secondaryCta?: {
-    text?: string
-    link?: string
-  }
-  videoUrl?: string
-}
+import type { HeroData } from '@/app/lib/content'
 
 const defaults = {
   badge: {
@@ -38,14 +19,13 @@ const defaults = {
 }
 
 export default function Hero({ data }: { data?: HeroData }) {
-  const avatar = data?.avatar
   const badge = data?.badge ?? defaults.badge
   const heading = data?.heading ?? defaults.heading
   const description = data?.description ?? defaults.description
   const primaryCta = data?.primaryCta ?? defaults.primaryCta
   const secondaryCta = data?.secondaryCta ?? defaults.secondaryCta
   const videoUrl = data?.videoUrl ?? defaults.videoUrl
-  const avatarUrl = avatar ? urlFor(avatar).width(96).height(96).url() : null
+  const avatarUrl = data?.avatarUrl ?? null
 
   return (
     <div id="#" className="relative isolate bg-white flex flex-col justify-center lg:pt-40 px-6 lg:px-8">
@@ -83,9 +63,11 @@ export default function Hero({ data }: { data?: HeroData }) {
           >
             <div className="flex items-center gap-6 justify-center">
               {avatarUrl && (
-                <img
+                <Image
                   alt="Profile"
                   src={avatarUrl}
+                  width={96}
+                  height={96}
                   className="inline-block size-14 lg:size-16 rounded-full border shadow rounded-full outline -outline-offset-1 outline-black/5"
                 />
               )}

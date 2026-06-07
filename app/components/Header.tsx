@@ -1,15 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import * as motion from 'motion/react-client'
-import { urlFor } from '@/sanity/lib/image'
-
-interface HeaderData {
-  logo?: { asset: { _ref: string } }
-  navigation?: { name: string; href: string }[]
-}
+import type { HeaderData } from '@/app/lib/content'
 
 const defaultNavigation = [
   { name: 'Home', href: '#' },
@@ -21,7 +17,7 @@ const defaultNavigation = [
 export default function Header({ data }: { data?: HeaderData }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const navigation = data?.navigation ?? defaultNavigation
-  const logoUrl = data?.logo ? urlFor(data.logo).height(24).fit('max').url() : 'https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=cyan&shade=600'
+  const logoUrl = data?.logoUrl ?? '/window.svg'
 
   return (
     <motion.header
@@ -39,9 +35,11 @@ export default function Header({ data }: { data?: HeaderData }) {
         >
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">David Stefan Nedelea</span>
-            <img
+            <Image
               alt=""
               src={logoUrl}
+              width={24}
+              height={24}
               className="h-6 w-auto"
             />
           </a>
@@ -91,9 +89,11 @@ export default function Header({ data }: { data?: HeaderData }) {
           <div className="flex items-center justify-between">
             <a href="#" onClick={() => setMobileMenuOpen(false)} className="-m-1.5 p-1.5">
               <span className="sr-only">David Stefan Nedelea</span>
-              <img
+              <Image
                 alt=""
                 src={logoUrl}
+                width={24}
+                height={24}
                 className="h-6 w-auto"
               />
             </a>

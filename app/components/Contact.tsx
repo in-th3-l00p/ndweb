@@ -2,11 +2,7 @@
 
 import * as motion from 'motion/react-client'
 import { socialIcons, type SocialLink } from '@/app/lib/socialIcons'
-
-interface ContactData {
-  heading?: string
-  description?: string
-}
+import type { ContactData } from '@/app/lib/content'
 
 const defaultSocialLinks: SocialLink[] = [
   { name: 'Instagram', value: '@davidnedelea', url: 'https://instagram.com/davidnedelea', platform: 'instagram', showInContact: true },

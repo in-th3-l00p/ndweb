@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { sanityFetch, SanityLive } from "@/sanity/lib/live";
-import { SITE_SETTINGS_QUERY } from "@/sanity/lib/queries";
-import { urlFor } from "@/sanity/lib/image";
+import { siteSettings } from "@/app/lib/content";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,21 +13,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const { data: siteSettings } = await sanityFetch({ query: SITE_SETTINGS_QUERY });
-
-  return {
-    title: siteSettings?.title || "Nedelea David",
-    description: siteSettings?.description || "editor freelancer",
-    icons: siteSettings?.favicon
-      ? {
-          icon: urlFor(siteSettings.favicon).width(32).height(32).url(),
-          shortcut: urlFor(siteSettings.favicon).width(16).height(16).url(),
-          apple: urlFor(siteSettings.favicon).width(180).height(180).url(),
-        }
-      : undefined,
-  };
-}
+export const metadata: Metadata = {
+  title: siteSettings.title,
+  description: siteSettings.description,
+};
 
 export default function RootLayout({
   children,
@@ -42,7 +29,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
         {children}
-        <SanityLive />
       </body>
     </html>
   );
